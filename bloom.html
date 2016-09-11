@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Edwardyam.GitHub.io : Welcome">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <script type="text/javascript" src="MathJax-2.6-latest/MathJax.js?config=default"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+
+    <title>Edwardyam.GitHub.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/EdwardYam">View on GitHub</a>
+
+          <h1 id="project_title">布隆过滤器</h1>
+          <h2 id="project_tagline">Bloom Filter</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>布隆过滤器</h3>
+
+<p>
+在计算机问题中，经常会遇到需要存储键值和值的情况。这时候最容易想到的也就是哈希表这个数据结构。可是哈希表的存储效率并不理想。在数据量较低的时候这个问题不会有太大的体现，但是随时数据量变大，这个问题就会逐渐显现，因为哈希表的存储效率仅在50%左右。<br/><br/>
+
+为了解决这种问题，其中一种思路就是使用布隆过滤器。以黑名单的电子邮件地址的存储为例子来说明布隆过滤器。先建立一个16亿二进制即两亿字节的向量，然后将这16亿个二进制位全部清零。对于每一个电子邮件$X$，用8个不同的随机数产生器$(F_1,F_2,…F_8)$产生8个信息指纹$(f_1,f_2,…f_8)$。再用一个随机数产生器G把这8个信息指纹映射到1-16亿中的8个自然数$(g_1,g_2,…g_8)$。现在把这8个位置的二进制全部设置为1。对这一亿个电子邮件地址都经过这样的处理后，一个针对博隆过滤器就建成了。<br/><br/>
+
+在检测邮件地址$Y$是否在黑名单中时，用相同的8个随机数产生器$(F_1,F_2,…F_8)$对这个地址产生8个信息指纹$(s_1,s_2,…s_8)$,然后将这8个指纹对应到布隆过滤器的8个二进制位，分别是$(t_1,t_2,…t_8)$，如果$Y$在黑名单中，$(t_1,t_2,…t_8)$对应的8个二进制数一定是1。这样，就可以准确发现在黑名单中的邮件地址。<br/><br/>
+
+布隆过滤器不会漏掉黑名单中的任何一个邮件地址，但是有极小的概率会将不在黑名单中的邮件地址误判为在黑名单中，因为一个不在黑名单中的邮件地址在布隆过滤器中对应的8个位置都为1。<br/><br/>
+</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Written by <a href="https://edwardyam.github.io/">Edward Yam</a></p>
+      </footer>
+    </div>
+
+
+
+  </body>
+</html>
