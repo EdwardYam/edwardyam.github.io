@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Edwardyam.GitHub.io : Welcome">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <script type="text/javascript" src="MathJax-2.6-latest/MathJax.js?config=default"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+
+    <title>Edwardyam.GitHub.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="content.html">View All Articles</a>
+
+          <h1 id="project_title">PageRank算法简述</h1>
+          <h2 id="project_tagline">PageRank</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PageRank网页排名算法</h3>
+
+<p>
+PageRank算法被认为是十大机器学习经典算法之一。这项算法由Google公司的佩奇和布林共同完成。在这个算法中最核心的思想就是一个投票的思想。如果一个网页被很多其他网页所链接，说明这个网页很大可能受到大家的承认和信赖。在这个思想的基础上，有了许多改进和优化。比如来自不同网页的链接区别对待，对于网页排名高的网页的链接，通常认为可靠度会更高，因此所占的权重会更大。<br/><br/>
+
+可是，现在又会有一个问题，计算网页的排名时需要用到网页本身的排名，这就会形成一个怪圈。而PageRank算法的提出者也结合二位矩阵和迭代的思想用很简单但巧妙的思想很好地解决了这个问题。一开始先假定所有的网页排名是相同的，根据这个初始值计算出第一次网页迭代的排名，然后根据第一次的计算结果再计算第二次排名，通过多次迭代之后网页排名的值都能收敛于排名的真实值。<br/><br/>
+
+在PageRank算法以前，人们也早就留意到了网页排名的问题，但是当时大多的排名算法都将网页按照一个个的个体看待，而PageRank算法将互联网当作一个整体来看待，这样的算法在排名时也考虑了网页之间的关系，而不仅仅是网页内容和查询语句的相关性。<br/><br/>
+
+PageRank算法对搜索结果的贡献是很大的。在PageRank算法应用以前，互联网上的搜索引擎，每十条大概只有两三条是相关的，而现在，十条搜索结果能保证有七八条是相关的。这就将搜索引擎从还有很大的改善空间一口气提升到让用户十分满意的状态。<br/><br/>
+
+接下来简单阐述一下PageRank算法的计算方法，假设有向量$B=(b_1,b_2,…,b_N)^T$表示第一个、第二个、第N个网页的网页排名。
+$$
+A=\begin{bmatrix}
+{a_{11}}&…&{a_{1n}}&…&{a_{1M}}\\
+{a_{m1}}&…&{a_{mn}}&…&{a_{mM}}\\
+{\vdots}&…&{\vdots}&…&{\vdots}\\
+{a_{M1}}&…&{a_{Mn}}&…&{a_{MM}}\\
+\end{bmatrix}
+$$
+以上矩阵表示的是网页之间连接的数目，其中$a_{mn}$代表第$m$个网页指向第$n$个网页的链接数。在这个问题中A是已知的而B是未知的，假设$B_i$是第$i$次迭代的结果，那么
+$$
+B_i=A\cdot B_{i-1}
+$$
+初始的时候，假设所有网页的排名都是$1/N$，即
+$$
+B_0=(\frac{1}{N},\frac{1}{N},…,\frac{1}{N})
+$$
+通过公式$B_i=A\cdot B_{i-1}$多次迭代之后即可完成运算，迭代次数通常在10次左右，结果即会收敛。可是这样的运算量会非常大，尤其是在以网页排名为应用背景这种数量很多的情况下运算。为了解决这个问题PageRank算法的提出者提出了使用稀疏矩阵。<br/><br/>
+
+其实网页之间连接的数量相比互联网本身的规模是非常稀疏的，因此计算时需对零概率或者小概率事件进行平滑处理，网页的排名是一个一维向量，它的平滑处理可以利用一个小的常数$\alpha$，这时迭代公式就变为
+$$
+B_i=[\frac{\alpha}{N}\cdot I+(1-\alpha)A]\cdot B_{i-1}
+$$
+其中$N$是互联网网页数量，$\alpha$是一个较小的常数，$I$是单位矩阵。<br/><br/>
+
+由于网页排名的计算主要基于矩阵相乘完成，这种计算很容易分解成许多小任务分布在多台计算机上并行完成，这也在一定程度上加强了PageRank算法的实用性和推广性。<br/><br/>
+
+本文参考吴军先生的《数学之美》
+</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>written by <a href="https://edwardyam.github.io/">Edward Yam</a></p>
+      </footer>
+    </div>
+
+
+
+  </body>
+</html>
