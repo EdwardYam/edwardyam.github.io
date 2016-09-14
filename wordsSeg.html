@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Edwardyam.GitHub.io : Welcome">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <script type="text/javascript" src="MathJax-2.6-latest/MathJax.js?config=default"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+
+    <title>Edwardyam.GitHub.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="content.html">View All Articles</a>
+
+          <h1 id="project_title">浅谈中文分词法</h1>
+          <h2 id="project_tagline">Chinese Words Segmentation</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>中文分词问题</h3>
+
+<p>
+中文或者说是东方国家的语言往往没有明显的分界线，因此在自然语言处理的问题中，首先要处理的就是分词问题。中文分词最简单的就是查字典，即将句子从头到尾进行扫描，遇到字典里面有的词就标识出来，遇到复合词即匹配最长的词，遇到不认识的字符串就分割为单字。这样就是最简单的分词法。<br/><br/>
+
+这样看似简单的方法，却能够解决正确大多情况下的分词问题。但是对于一些比较复杂点的情况就会不太适用。比如“广州大学城书店”，正确的分词应该为“广州-大学城-书店”，可是按照上述的算法会被分解为“广州大学-城-书店”。这时候如果用统计语言学的分词方法就能比较好地解决这个问题。假定一个句子$S$有一下三种分词方法
+$$
+A_1,A_2,A_3,…,A_k
+B_1,B_2,B_3,…,B_m
+C_1,C_2,C_3,…,C_n
+$$
+其中，$A_1,A_2,A_3,…,B_1,B_2,B_3,…C_1,C_2,C_3,…$等都是汉语的词，几种分词方法产生的分的词的数量可能不一样。最好的分词法应该保证分词完成后这个句子出现的概率最大，即如果$A_1,A_2,A_3,…,A_k$是最好的分词法，其概率满足
+$$
+P(A_1,A_2,A_3,…,A_k) > P(B_1,B_2,B_3,…,B_m)
+$$
+且
+$$
+P(A_1,A_2,A_3,…,A_k) > P(C_1,C_2,C_3,…,C_n)
+$$
+因此，只需要把所有可能的组合算出来，然后找出最优可能出现的组合即为该句子的分词方法。但是如果将所有可能的组合都列举出来那么计算量会太大。因此可以把它看成是动态规划问题，利用维比特算法快速找到最佳分词。<br/><br/>
+
+可是中文分词往往都面临分词的粒度的问题，比如“北京大学”有的人认为应该分为两个词“北京”和“大学”，也有的人认为应该是一个词。有一种方法是在确定一个词是复合词后找出它的嵌套结构。但是，不同的应用中分词的粒度都应该不同。在翻译过程中，应该选择粒度较大的词，比如“联想公司”如果拆成两个词就会比较难进行翻译，而如果当作一个词来处理，就能比较容易正确地翻译为Lenovo。而在搜索应用中则应该尽可能选择小的粒度进行分词，如果选择大的粒度，在搜索“清华”时，不会出来“清华大学”相关的结果，这在搜索引擎中是不合理的。
+</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>written by <a href="https://edwardyam.github.io/">Edward Yam</a></p>
+      </footer>
+    </div>
+
+
+
+  </body>
+</html>
