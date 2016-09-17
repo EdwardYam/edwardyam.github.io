@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Edwardyam.GitHub.io : Welcome">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <script type="text/javascript" src="MathJax-2.6-latest/MathJax.js?config=default"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+
+    <title>Edwardyam.GitHub.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="content.html">View All Articles</a>
+
+          <h1 id="project_title">贝叶斯网络</h1>
+          <h2 id="project_tagline">Bayesian Network</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>贝叶斯网络</h3>
+
+<p>
+马尔可夫链描述了一种情况，每个状态的取值仅取决于前面有限个状态。这样一个模型比较粗糙，且在描述一些情况时会感觉到有点无力。现实生活中很多情况不能用一种单链的情况，而是交叉的比较复杂的情况。比如下图中的情况，心血管疾病的成因是错综复杂的。
+
+<img src="images/Bayesian/bayesian.jpg"><br/>
+
+上图表示的有向图就可以看成一个网络，每个圆圈就是一个状态。状态之间的连接表示状态间有因果关系。比如心血管疾病到抽烟有一条线则表示心血管疾病可能和吸烟有关。如果上图的马尔可夫链成立，即每个状态之和它直接相连的状态有关，和它间接相连的状态没有直接关系，那么这就是贝叶斯网络。可是即便有两个状态，状态A和状态B没有直接的有向弧但并不代表状态A不会间接地改变状态B，只要在图中有一条从A到B的路径，这两个状态就是间接相关的。所有这些关系都可以有一个量化的可信度，用一个概率描述。也就是说贝叶斯网络上的弧可以附加权重。马尔夫假设保证了贝叶斯网络便于计算。<br/><br/>
+
+<img src="images/Bayesian/bayesian01.jpg"><br/>
+
+如上图所示如果要计算“家族病史”、“高血脂”、“心血管疾病”三者的联合概率分布，可以利用贝叶斯公式。设<br/>
+“家族病史”为A事件<br/>
+“高血脂”为B事件<br/>
+“心血管疾病”为C事件，则
+$$
+P(ABC)=P(C|AB)\cdot P(B|A)\cdot P(A)
+$$
+如果想求心血管疾病有多大的可能是由家族病史引起的，也可以通过这个贝叶斯网络计算出来。
+$$
+P(A|C)=P(AC)/P(C)
+$$
+其中：
+$$
+P(AC)=P(ABC) + P(A\lnot BC)
+$$
+$$
+P(C)= P(ABC) + P(A\lnot BC) + P(\lnot ABC) + P(\lnot A\lnot BC)
+$$
+根据以上龚诗嘉就可以把$P(A|C)$求出来。我们计算上面的每个状态取值时，只考虑了前一个状态，这和马尔可夫链是相同的。但是贝叶斯网络的拓扑结构比马尔可夫链灵活，它不受马尔可夫链的约束，因此可以更准确地描述事件之间的相关性。<br/><br/>
+
+使用贝叶斯网络必须先确定这个网络的拓扑结构，然后还要确定各个状态之间的概率。得到拓扑结构和概率的过程分别叫做结构训练和参数训练。相比马尔可夫链，贝叶斯网络的训练是一个NP完备问题，也就是说，现在的计算机是不可计算的。可是在某些应用中，可以将训练过程简化，并在计算机上实现。
+</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>written by <a href="https://edwardyam.github.io/">Edward Yam</a></p>
+      </footer>
+    </div>
+
+
+
+  </body>
+</html>
