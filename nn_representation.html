@@ -35,17 +35,24 @@
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Neural Networks</h3>
 
 <p>
-As the development of machine learning, neural networks begin to be one of the most popular method in machine learning. There are many algorithms about machine learning, however, the first question we have to know is why we need neural networks or what is the main differences between neural networks and other algorithms.<br/><br/>
+As the development of machine learning, neural networks begin to be one of the most popular algorithms in machine learning. There are many algorithms about machine learning, however, the first question we have to know is why we need neural networks or what is the main differences between neural networks and other algorithms.<br/><br/>
 
-To explain this problem, we can discuss about non-liner classification problems. In these problems, we have to build a lot of parameters in formula. (e.g. if we have three inputs $x_1$, $x_2$, $x_3$, our formula may be $g(x_1 * x_2 + x_2 * x_3 + x_1 * x_3 + x_1^2 + x_2^2 + x_3^2)$ in order to solve the non-liner classification problem. However, if we have 1 thousand or even 1 million parameters, we have to build many parameters to solve the problem if we use algorithm like logistic regression but not neural network).<br/><br/>
+To explain this problem, we can discuss about non-liner classification problems. In these problems, we have to build a lot of parameters in formula if we use logistic regression. (e.g. if we have three inputs $x_1$, $x_2$, $x_3$, our formula may be $g(x_1 * x_2 + x_2 * x_3 + x_1 * x_3 + x_1^2 + x_2^2 + x_3^2)$ in order to solve the non-liner classification problem. However, if we have 1 thousand or even 1 million parameters, we have to build many parameters to solve the problem if we use algorithm like logistic regression but not neural network).<br/><br/>
 
 It is nearly impossible for us to build so many parameters; however, if we use algorithms like neural network, we can avoid theses problems.<br/><br/>
 
-Why neural networks' name is neural networks? It is an algorithm under the enlightening of neural networks in biology. There are some interesting experiments. There is a part in our brain which is in charge of sense of view. If we cut the nerves from this part and connect the nerves about hearing, we can hear voice. It is a interesting experiment, and it also tells us that the same part of brain can finish different tasks.<br/><br/>
+Why neural network's name is neural network? It is an algorithm under the enlightening of neural network in biology. There are some interesting experiments. There is a part in our brain which is in charge of sense of view. If we cut the nerves from this part and connect the nerves about hearing to it, we can hear voice. It is a interesting experiment, and it also tells us that the same part of brain can finish different kinds of tasks.<br/><br/>
 
-Under the lightening of such experiments, computer scientist also want to find an algorithm which can complete various of tasks under different training. Neural networks is a very useful algorithm because it can help us solve different problems with different trainging data.<br/><br/>
+Under the lightening of such experiments, computer scientists also want to find an algorithm which can complete various of tasks under different training. Neural networks is a very useful algorithm because it can help us solve different kinds of problems with different trainging data.<br/>
+<div style="text-align: center;">
+	<img style="height: 150px;width: 220px;" src="images/nn-representation/nn1.jpg"/><br/>
+</div>
+In neural networks, there are many neuron model, and each of the neuron model is a logistic unit(just like the picture showed above). If we combine many neuron models together(like the picture below), it will become a a neural networks. All the neurons in the same layer consist the layer in neural networks(in the picture show below, the neurons in the same layer are in the same color). The layer which is consist of input data is called input layer(the blue one in the picture), while the neuron which is responsible for output is called output layer(the red one in the picture). The other layer between input layer and output layer is called hidden layer(just like the yellow and the green in the picture).<br/>
+<div style="text-align: center;">
+	<img style="height: 180px;width: 220px;" src="images/nn-representation/nn2.jpg"/><br/>
+</div>
 
-In neural networks, there are many neuron model, and each of the neuron model is a logistic unit. If we combine many neuron models together, it will become a a neural networks. All the neurons in the same layer consist the layer in neural networks. The layer which is consist of input data is called input layer, while the neuron which is responsible for output is called output layer. The other layer between input layer and output layer is called hidden layer.<br/><br/>
+In this article, I only introduce neural network breifly. The more things about neural network will be introduced in my next articles.<br/><br/>
 
 This article is referenced by the machine learning course of Andrew Ng in Coursera.
 </p>
