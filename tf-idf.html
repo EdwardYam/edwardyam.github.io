@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Edwardyam.GitHub.io : Welcome">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <script type="text/javascript" src="MathJax-2.6-latest/MathJax.js?config=default"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+
+    <title>Edwardyam.GitHub.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="content.html">View All Articles</a>
+
+          <h1 id="project_title">TF-IDF权值的计算</h1>
+          <h2 id="project_tagline">TF-IDF</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TF-IDF in text categorization</h3>
+<p>
+Text categorization(TC) is a very important and interesting problem in natural language processing(NLP). There are many methods in TC; however, one of the most popular method in TC is entoppy based term weighting schemes in VSM.<br/><br/>
+
+There are two main kinds of schemes in term weighting. One is unsupervised scheme, such as tf, tf-idf. The other one is supervised scheme. All in all, unsupervised one will not think about the category laber of text, but supervised one will think about it. In this article, I will introduce tf-idf which is one of the most typical term weighting schemes.<br/><br/>
+
+Tf-idf(Term frequency - Inverse document frequency) is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. Term frequency is based on the Luhn Assumption: The weight of a term that occurs in a document is simply proportional to the term frequency. When calculating term frequency, we count the number of times each term occurs in each document and sum them all together. As a result, the number of times a term occurs in a document is called its term frequency.<br/><br/>
+
+The term weighting of word $j$ in document $i$ can be calculated as following:
+$$
+tf_{i,j} = \frac{n_{ij}}{\sum_1^k n_{kj}}
+$$
+While $n_{ij}$ is the times of word $j$ in document $i$, and $k$ is the total number of document.However, there are many other methods to calculate term frequency, they are all based on the origin fomular showed above.<br/><br/>
+
+Inverse document frequency is a scheme to measure how much information the word provides. It think that a word which always appears in many document contains less information than the word only appears in several document. Idf can be calculated in the formular below:
+$$
+idf_i = log(\frac{|D|}{1 + d_{i}})
+$$
+While $|D|$ is the total number of document and $d_{i}$ is the number of document which contains word $i$. $d_{i}$ is added by one to prevent $d_{i}$ is zero which means the word $i$ is not contained in any document of $D$.<br/><br/>
+
+After calculating tf and idf, we can time them together to get tf-idf of a word. With the help of tf-idf we can translate a sentence or a document into a vector. These vectors is consisted of $n$ terms(words) and each term is in a fixed position. If a word is appeared in a document, the position where the word is will be set to the corresponding tf-idf. While the position will be set to zero if the word is not in the document.<br/><br/>
+
+When we get the vector of documents, we can begin to train and test the text categorization in SVM or KNN.
+</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>written by <a href="https://edwardyam.github.io/">Edward Yam</a></p>
+      </footer>
+    </div>
+
+
+
+  </body>
+</html>
